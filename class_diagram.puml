@@ -1,0 +1,70 @@
+@startuml
+
+interface CharUtilities {
+  + {method}{static} boolean isAWordDelimiter(char)
+  + {method}{static} boolean isAWhiteSpace(char)
+}
+
+interface IProcessor<R> {
+  + {method} void process(char)
+  + {method} R result()
+  + {method} String toString()
+}
+
+class FileProcessor {
+ - {field} List<IProcessor> processors
+ - {field} File file
+ ~ {method} FileProcessor(File)
+ ~ {method} void printStats()
+ ~ {method} Map<String, Object> result()
+}
+
+class FileSystemMonitor {
+  - {field}{static} String[] SUPPORTED_FILE_TYPES
+  - {field} Path sourcePath
+  - {field} Path destinationPath
+  - {field} ThreadPoolExecutor threadPoolExecutor
+  ~ {method} FileSystemMonitor(String[])
+  - {method} FileSystemMonitor(String, String, ThreadPoolExecutor)
+  ~ {method} void start()
+  - {method} boolean moveFolderToDestination(File, Path)
+  - {method}{static} String getTmpDirectory()
+}
+
+class Main {
+   - {method}{static} void helpPage()
+   - {field}{static} String PATH_TO_FOLDER_TO_MONITOR_INDICATOR
+   + {method}{static} void main(String[] args)
+}
+
+class MostUsedWordProcessor implements IProcessor {
+  - {field} Map<String, Long> countingMap
+  - {field} String currentWord
+  + {method} void process(char)
+  + {method} SimpleImmutableEntry<String, Long> result()
+  + {method} String toString()
+  - {method} void addCurrentWordToTheMapIfNecessary()
+}
+
+class NumberOfDotsProcessor implements IProcessor {
+  - {field} long counter
+  + {method} process(char)
+  + {method} Long result()
+  + {method} String toString()
+}
+
+class NumberOfWordsProcessor implements IProcessor {
+   - {field} boolean hasWord
+   - {field} long counter
+   + void process(char)
+   + Long result()
+   + String toString()
+}
+
+
+Main --* FileSystemMonitor:use
+FileSystemMonitor --* FileProcessor:use
+FileProcessor --* IProcessor: use
+MostUsedWordProcessor --* CharUtilities: use
+NumberOfWordsProcessor --* CharUtilities: use
+@enduml

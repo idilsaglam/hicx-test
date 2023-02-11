@@ -1,8 +1,5 @@
 package io.makepad.hicx;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
-
 class NumberOfWordsProcessor implements IProcessor<Long>{
 
   private boolean hasWord = false;

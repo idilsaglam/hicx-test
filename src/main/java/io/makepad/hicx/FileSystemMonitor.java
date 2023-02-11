@@ -31,7 +31,7 @@ class FileSystemMonitor {
    * @param arguments An array of arguments used to create FileSystemMonitor instance
    * @throws IOException if an I/O error occurs or the temporary-file directory does not exist
    */
-  public FileSystemMonitor(String[] arguments) throws IOException {
+  FileSystemMonitor(String[] arguments) throws IOException {
     this(
         Path.of(arguments[0]),
         Path.of(arguments.length == 1 ? FileSystemMonitor.getTmpDirectory() : arguments[1]),
@@ -55,7 +55,7 @@ class FileSystemMonitor {
    * Start the monitoring and processing of each new file
    * @throws IOException – If an I/O error occurs
    */
-  public void start() throws IOException {
+  void start() throws IOException {
     WatchKey key;
     try (WatchService watcher = FileSystems.getDefault().newWatchService()) {
       this.sourcePath.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);

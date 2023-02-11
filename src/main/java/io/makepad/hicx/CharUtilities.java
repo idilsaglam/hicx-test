@@ -1,6 +1,5 @@
 package io.makepad.hicx;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 interface CharUtilities {

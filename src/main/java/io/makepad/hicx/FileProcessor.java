@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.Collectors;
 
 class FileProcessor {
@@ -62,7 +60,7 @@ class FileProcessor {
    * Returns the map of result for each processor. This method used principally for unit testing
    * @return A HashMap with each processor and its result
    */
-  public Map<String, Object> result() {
+  Map<String, Object> result() {
     Map<String, Object> resultMap = new HashMap<>();
     this.processors.forEach(processor -> {
       resultMap.put(processor.getClass().getName(), processor.result());

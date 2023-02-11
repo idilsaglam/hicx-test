@@ -1,7 +1,6 @@
 package io.makepad.hicx;
 
 import java.util.AbstractMap.SimpleImmutableEntry;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;

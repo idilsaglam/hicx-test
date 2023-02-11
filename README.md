@@ -4,6 +4,11 @@
 
 This project is created by Idil Saglam for the HICX's interview process. All rights are reserved to the project's author
 
+## Design
+
+Here's an overall class diagram for the implementation \
+![](./class_diagram.png)
+
 ## Build
 
 From project's root directory. Run the following command tp create an executable JAR archive
