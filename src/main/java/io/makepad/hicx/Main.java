@@ -14,7 +14,6 @@ public class Main {
    * Show the help page on the stdout
    */
   private static void helpPage() {
-    // TODO: Show proper table
     for (String[] option: HELP_PAGE_OPTIONS) {
       System.out.format("%s%150s%n", option);
     }
